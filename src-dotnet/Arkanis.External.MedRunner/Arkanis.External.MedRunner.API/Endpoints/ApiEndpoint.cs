@@ -14,6 +14,10 @@ public abstract class ApiEndpoint(ApiConfig config, ITokenProvider tokenProvider
 {
     private readonly HttpClient _httpClient = httpClient ?? new HttpClient();
 
+    private static readonly Action<ILogger, string, string, Exception?> LogRequest = LoggerMessage.Define<string, string>(LogLevel.Debug, default, "{Method} {Url}");
+    private static readonly Action<ILogger, string, string, string, Exception?> LogRequestError = LoggerMessage.Define<string, string, string>(LogLevel.Error, default, "Received API error response for {Method} {Url}: {ErrorMessage}");
+    private static readonly Action<ILogger, string, string, Exception?> LogRequestException = LoggerMessage.Define<string, string>(LogLevel.Error, default, "An exception occured while handling {Method} {Url}");
+
     /// <summary>
     ///     Returns the endpoint path (to be implemented by derived classes).
     /// </summary>
@@ -119,7 +123,7 @@ public abstract class ApiEndpoint(ApiConfig config, ITokenProvider tokenProvider
     /// </summary>
     private async Task<ApiResponse<T>> SendRequestAsync<T>(HttpRequestMessage request, string method, string url)
     {
-        logger.LogDebug("{Method} {Url}", method, url);
+        LogRequest(logger, method, url, null);
         try
         {
             using var response = await _httpClient.SendAsync(request);
@@ -134,7 +138,7 @@ public abstract class ApiEndpoint(ApiConfig config, ITokenProvider tokenProvider
                 };
             }
 
-            logger.LogDebug("Error for {Method} {Url}: {Content}", method, url, content);
+            LogRequestError(logger, method, url, content, null);
             return new ApiResponse<T>
             {
                 Success = false,
@@ -144,7 +148,7 @@ public abstract class ApiEndpoint(ApiConfig config, ITokenProvider tokenProvider
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Exception for {Method} {Url}: {ExMessage}", method, url, ex.Message);
+            LogRequestException(logger, method, url, ex);
             return new ApiResponse<T>
             {
                 Success = false,

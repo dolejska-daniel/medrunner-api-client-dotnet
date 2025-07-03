@@ -8,5 +8,5 @@ public class ClientStats
     /// <summary>
     ///     Emergency mission statistics for the client.
     /// </summary>
-    public EmergencyStats Missions { get; set; }
+    public required EmergencyStats Missions { get; set; }
 }

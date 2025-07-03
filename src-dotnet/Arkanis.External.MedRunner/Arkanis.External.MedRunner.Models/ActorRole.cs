@@ -3,7 +3,7 @@ namespace Arkanis.External.MedRunner.Models;
 /// <summary>
 ///     Enum for user/staff classes.
 /// </summary>
-public enum Class
+public enum ActorRole
 {
     None,
     Medic,

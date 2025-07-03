@@ -3,10 +3,10 @@ namespace Arkanis.External.MedRunner.Models;
 /// <summary>
 ///     Enum for user roles.
 /// </summary>
-public enum UserRoles
+public enum UserRoles : long
 {
-    CLIENT = 1 << 0,
-    STAFF = 1 << 1,
-    DEVELOPER = 1 << 51,
-    BOT = 1 << 52,
+    Client = 1 << 0,
+    Staff = 1 << 1,
+    Developer = 1L << 51,
+    Bot = 1L << 52,
 }

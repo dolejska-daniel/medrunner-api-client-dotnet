@@ -5,8 +5,8 @@ namespace Arkanis.External.MedRunner.Models;
 /// </summary>
 public enum AccountDeactivationReason
 {
-    NONE,
-    CLIENT_DRIVEN_DELETION,
-    TERMINATED,
-    BLOCKED,
+    None,
+    ClientDrivenDeletion,
+    Terminated,
+    Blocked,
 }

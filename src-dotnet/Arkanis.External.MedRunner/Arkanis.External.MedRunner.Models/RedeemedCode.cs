@@ -8,7 +8,7 @@ public class RedeemedCode
     /// <summary>
     ///     The code value.
     /// </summary>
-    public string Code { get; set; }
+    public required string Code { get; set; }
 
     /// <summary>
     ///     The type of code.

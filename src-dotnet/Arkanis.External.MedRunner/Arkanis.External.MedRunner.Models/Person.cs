@@ -38,7 +38,7 @@ public class Person : WritableDbItem
     /// <summary>
     ///     The client stats for the person.
     /// </summary>
-    public ClientStats ClientStats { get; set; }
+    public required ClientStats ClientStats { get; set; }
 
     /// <summary>
     ///     The ID of the active emergency, if any.

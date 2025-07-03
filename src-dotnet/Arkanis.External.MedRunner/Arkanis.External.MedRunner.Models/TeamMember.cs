@@ -23,7 +23,7 @@ public class TeamMember
     /// <summary>
     ///     The class of the team member.
     /// </summary>
-    public Class Class { get; set; }
+    public ActorRole ActorRole { get; set; }
 
     /// <summary>
     ///     The team ID, if any.

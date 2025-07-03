@@ -5,7 +5,7 @@ namespace Arkanis.External.MedRunner.Models;
 /// </summary>
 public enum PersonType
 {
-    CLIENT,
-    STAFF,
-    BOT,
+    Client,
+    Staff,
+    Bot,
 }
