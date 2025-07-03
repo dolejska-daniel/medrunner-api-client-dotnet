@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Arkanis.External.MedRunner.API/Arkanis.External.MedRunner.API.csproj" />
+  <Project Path="Arkanis.External.MedRunner.Models/Arkanis.External.MedRunner.Models.csproj" />
+</Solution>
